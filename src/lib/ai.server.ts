@@ -41,25 +41,27 @@ async function callModel(
   return content;
 }
 
-function extractJson(raw: string): unknown {
+type JsonObject = Record<string, any>;
+
+function extractJson(raw: string): JsonObject {
   const cleaned = raw
     .replace(/^```(?:json)?/i, "")
     .replace(/```$/, "")
     .trim();
   try {
-    return JSON.parse(cleaned);
+    return JSON.parse(cleaned) as JsonObject;
   } catch {
     const start = cleaned.indexOf("{");
     const end = cleaned.lastIndexOf("}");
     if (start !== -1 && end > start) {
-      return JSON.parse(cleaned.slice(start, end + 1));
+      return JSON.parse(cleaned.slice(start, end + 1)) as JsonObject;
     }
     throw new Error("Model did not return valid JSON");
   }
 }
 
 /** Calls the free primary model, falling back to the secondary model on failure. */
-export async function generateJson(system: string, parts: AiPart[]): Promise<unknown> {
+export async function generateJson(system: string, parts: AiPart[]): Promise<JsonObject> {
   const apiKey = process.env["OPENROUTER_API_KEY"];
   if (!apiKey) throw new Error("AI is not configured yet.");
 
