@@ -16,7 +16,7 @@ async function callModel(
     headers: {
       Authorization: `Bearer ${apiKey}`,
       "Content-Type": "application/json",
-      "X-Title": "Converse AI Coach",
+      "X-Title": "Talksy",
     },
     body: JSON.stringify({
       model,

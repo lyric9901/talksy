@@ -24,13 +24,13 @@ import { errorMessage, store } from "@/lib/store";
 export const Route = createFileRoute("/analyze")({
   head: () => ({
     meta: [
-      { title: "Analyze a chat — Converse Coach" },
+      { title: "Analyze a chat — Talksy" },
       {
         name: "description",
         content:
           "Paste a conversation or upload screenshots and get a clear read of tone, momentum and balance, plus reply options with reasons.",
       },
-      { property: "og:title", content: "Analyze a chat — Converse Coach" },
+      { property: "og:title", content: "Analyze a chat — Talksy" },
       {
         property: "og:description",
         content: "Understand any conversation and get natural replies you can actually send.",
