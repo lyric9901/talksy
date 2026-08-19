@@ -52,7 +52,7 @@ function AnalyzePage() {
   const [text, setText] = useState("");
   const [context, setContext] = useState("");
   const [images, setImages] = useState<string[]>([]);
-  const [result, setResult] = useState<Record<string, any> | null>(null);
+  const [result, setResult] = useState<any>(null);
   const [replies, setReplies] = useState<Suggestion[]>([]);
 
   const analyzeFn = useServerFn(analyzeConversation);

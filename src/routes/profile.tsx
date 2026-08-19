@@ -41,7 +41,7 @@ function ProfilePage() {
   const [handle, setHandle] = useState("");
   const [notes, setNotes] = useState("");
   const [images, setImages] = useState<string[]>([]);
-  const [result, setResult] = useState<Record<string, any> | null>(null);
+  const [result, setResult] = useState<any>(null);
   const analyzeFn = useServerFn(analyzeProfile);
 
   const mutation = useMutation({

@@ -41,7 +41,7 @@ async function callModel(
   return content;
 }
 
-type JsonObject = Record<string, any>;
+type JsonObject = any;
 
 function extractJson(raw: string): JsonObject {
   const cleaned = raw
