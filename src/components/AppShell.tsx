@@ -2,6 +2,8 @@ import { Link } from "@tanstack/react-router";
 import { Home, MessageSquareText, Instagram, Drama, GraduationCap } from "lucide-react";
 import type { ReactNode } from "react";
 
+import logo from "@/assets/talksy-logo.png.asset.json";
+
 const NAV = [
   { to: "/", label: "Home", icon: Home },
   { to: "/analyze", label: "Analyze", icon: MessageSquareText },
