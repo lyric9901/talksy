@@ -74,7 +74,9 @@ Rules you must always follow:
 - Never suggest manipulation, deception or pressure.
 - Respond with a single valid JSON object and nothing else. No markdown fences.`;
 
-  const models = [PRIMARY_MODEL, FALLBACK_MODEL];
+  // The free primary model is text-only, so screenshots go straight to the vision fallback.
+  const hasImage = parts.some((p) => p.type === "image_url");
+  const models = hasImage ? [FALLBACK_MODEL] : [PRIMARY_MODEL, FALLBACK_MODEL];
   let lastError: unknown;
   for (const model of models) {
     try {
