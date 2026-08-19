@@ -15,13 +15,13 @@ import { errorMessage, store } from "@/lib/store";
 export const Route = createFileRoute("/profile")({
   head: () => ({
     meta: [
-      { title: "Instagram profile analyzer — Converse Coach" },
+      { title: "Instagram profile analyzer — Talksy" },
       {
         name: "description",
         content:
           "Turn publicly visible Instagram bio, captions or screenshots into conversation topics and natural openers.",
       },
-      { property: "og:title", content: "Instagram profile analyzer — Converse Coach" },
+      { property: "og:title", content: "Instagram profile analyzer — Talksy" },
       {
         property: "og:description",
         content: "Find genuine conversation topics from public profile information.",
@@ -41,7 +41,7 @@ function ProfilePage() {
   const [handle, setHandle] = useState("");
   const [notes, setNotes] = useState("");
   const [images, setImages] = useState<string[]>([]);
-  const [result, setResult] = useState<Record<string, any> | null>(null);
+  const [result, setResult] = useState<any>(null);
   const analyzeFn = useServerFn(analyzeProfile);
 
   const mutation = useMutation({

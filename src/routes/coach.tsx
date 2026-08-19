@@ -15,13 +15,13 @@ import { errorMessage, store, type HistoryItem, type StyleProfile } from "@/lib/
 export const Route = createFileRoute("/coach")({
   head: () => ({
     meta: [
-      { title: "Your coach & style — Converse Coach" },
+      { title: "Your coach & style — Talksy" },
       {
         name: "description",
         content:
           "Teach the coach your writing style, review your saved analyses and manage your data in one place.",
       },
-      { property: "og:title", content: "Your coach & style — Converse Coach" },
+      { property: "og:title", content: "Your coach & style — Talksy" },
       {
         property: "og:description",
         content: "Personal writing style, saved history and privacy controls.",

@@ -66,7 +66,7 @@ export function ScoreBar({ label, value, max = 10 }: { label: string; value: num
   );
 }
 
-export function RiskBadge({ risk }: { risk?: string }) {
+export function RiskBadge({ risk }: { risk?: string | undefined }) {
   const key = (risk ?? "Low").toLowerCase();
   const tone =
     key === "high"

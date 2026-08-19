@@ -15,13 +15,13 @@ import { cn } from "@/lib/utils";
 export const Route = createFileRoute("/practice")({
   head: () => ({
     meta: [
-      { title: "Practice a conversation — Converse Coach" },
+      { title: "Practice a conversation — Talksy" },
       {
         name: "description",
         content:
           "Rehearse first messages, awkward moments and difficult conversations with an AI partner, then get scored feedback.",
       },
-      { property: "og:title", content: "Practice a conversation — Converse Coach" },
+      { property: "og:title", content: "Practice a conversation — Talksy" },
       {
         property: "og:description",
         content: "Safe conversation practice with scored feedback and one clear challenge.",

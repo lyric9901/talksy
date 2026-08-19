@@ -2,6 +2,8 @@ import { Link } from "@tanstack/react-router";
 import { Home, MessageSquareText, Instagram, Drama, GraduationCap } from "lucide-react";
 import type { ReactNode } from "react";
 
+import logo from "@/assets/talksy-logo.png.asset.json";
+
 const NAV = [
   { to: "/", label: "Home", icon: Home },
   { to: "/analyze", label: "Analyze", icon: MessageSquareText },
@@ -15,13 +17,14 @@ export function AppShell({ children }: { children: ReactNode }) {
     <div className="min-h-screen bg-background">
       <header className="sticky top-0 z-40 border-b border-border/70 bg-background/85 backdrop-blur">
         <div className="mx-auto flex h-14 max-w-5xl items-center justify-between px-4">
-          <Link to="/" className="flex items-center gap-2">
-            <span className="grid h-8 w-8 place-items-center rounded-xl bg-primary font-display text-sm font-bold text-primary-foreground">
-              cc
-            </span>
-            <span className="font-display text-sm font-semibold tracking-tight">
-              Converse Coach
-            </span>
+          <Link to="/" className="flex min-w-0 items-center gap-2">
+            <img
+              src={logo.url}
+              alt="Talksy"
+              className="h-6 w-auto shrink-0 opacity-95"
+              width={120}
+              height={24}
+            />
           </Link>
           <nav className="hidden gap-1 md:flex">
             {NAV.map(({ to, label }) => (

@@ -13,10 +13,11 @@ async function callModel(
 ): Promise<string> {
   const res = await fetch("https://openrouter.ai/api/v1/chat/completions", {
     method: "POST",
+    signal: AbortSignal.timeout(45_000),
     headers: {
       Authorization: `Bearer ${apiKey}`,
       "Content-Type": "application/json",
-      "X-Title": "Converse AI Coach",
+      "X-Title": "Talksy",
     },
     body: JSON.stringify({
       model,
@@ -41,7 +42,7 @@ async function callModel(
   return content;
 }
 
-type JsonObject = Record<string, any>;
+type JsonObject = any;
 
 function extractJson(raw: string): JsonObject {
   const cleaned = raw
@@ -73,7 +74,9 @@ Rules you must always follow:
 - Never suggest manipulation, deception or pressure.
 - Respond with a single valid JSON object and nothing else. No markdown fences.`;
 
-  const models = [PRIMARY_MODEL, FALLBACK_MODEL];
+  // The free primary model is text-only, so screenshots go straight to the vision fallback.
+  const hasImage = parts.some((p) => p.type === "image_url");
+  const models = hasImage ? [FALLBACK_MODEL] : [PRIMARY_MODEL, FALLBACK_MODEL];
   let lastError: unknown;
   for (const model of models) {
     try {
