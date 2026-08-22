@@ -15,7 +15,7 @@
 ### 3. AI credit optimization (best answers, fewer calls)
 - **Client cache**: identical requests (same text/images/context hash) return the saved result instantly from localStorage instead of a new AI call.
 - **Screenshot compression**: resize uploads to max ~1024px JPEG before sending — big token/cost savings and faster uploads on mobile data.
-- **Lean prompts**: tighten system prompts (shorter, same quality), cap practice history sent to the last ~12 messages, cap suggestions at 4.
+- **Lean prompts**: tighten system prompts (concise but never truncating useful detail — the AI gives long, thorough answers whenever the conversation needs them), cap practice history sent to the last ~12 messages, cap suggestions at 4.
 - Keep the existing free-primary → fallback model chain; cache + compression sit on top.
 
 ### 4. History page (local storage only)
