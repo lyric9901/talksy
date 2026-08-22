@@ -21,10 +21,12 @@
 ### 4. History page (local storage only)
 - New `/history` route: full list of past chat analyses, profile analyses and practice sessions with type filter, reopen-to-view, single delete and clear-all. Nothing leaves the device.
 
-### 5. Fix profile analyzer for username/URL input
-- Today entering only `@not_4_shah` errors because Talksy can't (and won't) scrape Instagram. Fix the experience:
+### 5. Fix profile analyzer — auto-screenshot the profile URL
+- Today entering only a handle errors for every username because nothing is fetched. New flow:
   - Accept `@handle` or full profile URL with proper cleaning/validation.
-  - Server makes a best-effort fetch of the **public** profile page metadata; if Instagram blocks it (usual), show a friendly guided state: "Instagram doesn't allow automatic access — paste the bio or upload screenshots" with the handle pre-filled, instead of a raw error toast.
+  - Server renders the Instagram profile page headlessly and captures a **screenshot of the profile** (no login, no scraping of private data), then sends that screenshot to the vision AI to generate conversation starters — same as a manual upload, but automatic.
+  - If Instagram blocks the render or the profile is private (login wall — we never bypass privacy), fall back to a friendly guided state: "Instagram didn't let us view this profile — upload a screenshot of it" with the handle pre-filled, instead of a raw error toast.
+  - Note: truly private profiles can't be captured automatically by anyone without following the account; for those, the user uploads their own screenshot and the AI analyzes it the same way.
 
 ### 6. Settings page + themes
 - New `/settings` route: theme selector (**System / Light / Dark**, default dark), "use my style" toggle, data management.
